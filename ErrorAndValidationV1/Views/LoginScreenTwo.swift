@@ -18,39 +18,39 @@ struct LoginScreenTwoConfig {
 	var state: String = ""
 	var zipcode: String = ""
 
-	var errorMessages: [String] = []
+	var errorMessages: [FormErrors] = []
 
 	mutating func validate() -> Bool {
 		errorMessages.removeAll()
 
 		if firstName.isEmpty {
-			errorMessages.append("First Name is not valid")
+			errorMessages.append(.firstName)
 		}
 
 		if lastName.isEmpty {
-			errorMessages.append("Last Name is not valid")
+			errorMessages.append(.lastName)
 		}
 
 		if ssn.isEmpty {
-			errorMessages.append("SSN is required")
+			errorMessages.append(.ssn)
 		} else if !ssn.isSSNValid() {
-			errorMessages.append("SSN must be in format XXX-XX-XXXX")
+			errorMessages.append(.ssn)
 		}
 
 		if street.isEmpty {
-			errorMessages.append("Street is not valid")
+			errorMessages.append(.street)
 		}
 
 		if city.isEmpty {
-			errorMessages.append("City is not valid")
+			errorMessages.append(.city)
 		}
 
 		if state.isEmpty {
-			errorMessages.append("State is not valid")
+			errorMessages.append(.state)
 		}
 
 		if zipcode.isEmpty {
-			errorMessages.append("Zipcode is not valid")
+			errorMessages.append(.zipcode)
 		}
 
 		return errorMessages.isEmpty
@@ -66,12 +66,14 @@ struct LoginScreenTwo: View {
 	@State private var loginScreen = LoginScreenTwoConfig()
 
 	var body: some View {
-		InputForm(loginScreen: $loginScreen) {
-			handleLoginAction(action: $0)
+		VStack {
+			InputForm(loginScreen: $loginScreen) {
+				handleLoginAction(action: $0)
+			}
+			ValidationSummaryView(
+				errorMessages: loginScreen.errorMessages
+			)
 		}
-		FormValidationView(
-			errorMessages: loginScreen.errorMessages
-		)
 	}
 
 	private func handleLoginAction(action: LoginActions) {
@@ -115,18 +117,11 @@ struct InputForm: View {
 	}
 }
 
-struct FormValidationView: View {
-
-	var errorMessages: [String]
-
-	var body: some View {
-		ForEach(errorMessages, id: \.self) { errorMessage in
-			Text(errorMessage)
-				.foregroundStyle(.red)
-		}
-	}
-}
-
 #Preview {
 	LoginScreenTwo()
+}
+
+#Preview("Spanish") {
+	LoginScreenTwo()
+		.environment(\.locale, Locale(identifier: "es"))
 }

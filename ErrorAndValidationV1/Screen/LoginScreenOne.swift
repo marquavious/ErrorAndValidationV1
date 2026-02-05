@@ -20,7 +20,7 @@ struct LoginScreenOneConfig {
 
 struct LoginScreenOne: View {
 
-	@State var loginScreenOneConfig = LoginScreenOneConfig()
+	@State private var loginScreenOneConfig = LoginScreenOneConfig()
 
 	var body: some View {
 		Form {

@@ -58,7 +58,7 @@ struct LoginScreenTwoConfig {
 }
 
 // Come back to this
-enum LoginActions {
+enum LoginScreenTwoAction {
 	case submitButtonPressed
 }
 
@@ -76,7 +76,7 @@ struct LoginScreenTwo: View {
 		}
 	}
 
-	private func handleLoginAction(action: LoginActions) {
+	private func handleLoginAction(action: LoginScreenTwoAction) {
 		switch action {
 		case .submitButtonPressed:
 			print("Submit Button Pressed")
@@ -88,7 +88,7 @@ struct InputForm: View {
 
 	@Binding var loginScreen: LoginScreenTwoConfig
 
-	var handleAction: (LoginActions) -> Void
+	var handleAction: (LoginScreenTwoAction) -> Void
 
 	var body: some View {
 		Form {

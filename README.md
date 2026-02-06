@@ -19,12 +19,25 @@ The core of this project explores **Global Error Handling**. By leveraging custo
 ```swift
 @main
 struct PracticeApp: App {
-    var body: some Scene {
-        WindowGroup {
-            ContentView()
-                .withErrorView() // Centralized error handling injection
-        }
-    }
+	var body: some Scene {
+		WindowGroup {
+			ContentView()
+				.withErrorView() // Centralized error handling injection
+		}
+	}
+}
+
+// Now any view can use the showError env to show a view
+struct ContentView: View {
+
+	@Environment(\.showError) private var showError
+
+	var body: some View {
+		Button("Show Error using screen modifier") {
+			showError(CustomError.operationFailed, "Operation Failed")
+		}
+		.buttonStyle(.borderedProminent)
+	}
 }
 ```
 

@@ -24,8 +24,10 @@ struct ErrorAndValidationV1App: App {
 
 				// This Screen shoes the power of global error handling
 				LoginScreenFour()
-					.withErrorView()
 			}
+
+			// The magic line for global error handling
+			.withErrorView()
 		}
 	}
 }

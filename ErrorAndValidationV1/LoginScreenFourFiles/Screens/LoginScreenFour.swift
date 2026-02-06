@@ -20,7 +20,6 @@ struct LoginScreenFour: View {
 
 			NavigationLink("Show another screen to display global error") {
 				LISFSampleScreen()
-					.withErrorView()
 			}
 			.buttonStyle(.bordered)
 		}

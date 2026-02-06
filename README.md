@@ -15,3 +15,5 @@ This repository is a dedicated practice application designed to master advanced 
 ### Project Highlights
 
 The core of this project explores **Global Error Handling**. By leveraging custom `EnvironmentKeys`, the app can trigger synchronized error alerts from anywhere in the view hierarchy without redundant code.
+
+<img src="./Screenshots/FormValidation.png" width="30%" /> <img src="./Screenshots/GlobalValidationOne.png" width="30%" /> <img src="./Screenshots/GlobalValidationTwo.png" width="30%" />

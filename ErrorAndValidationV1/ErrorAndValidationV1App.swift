@@ -9,9 +9,29 @@ import SwiftUI
 
 @main
 struct ErrorAndValidationV1App: App {
-    var body: some Scene {
-        WindowGroup {
-					LoginScreenOne()
-        }
-    }
+
+	@State private var errorWrapper: LoginScreenFourErrorWrapper?
+
+	var body: some Scene {
+		WindowGroup {
+			
+			// Enter Log in Screen you would like to test here
+			// LoginScreenOne()
+
+			NavigationStack {
+				LoginScreenFour()
+					.withErrorView()
+			}
+			/*
+				.environment(\.showError, ShowErrorAction(action: showError))
+				.sheet(item: $errorWrapper) { errorWrapper in
+					Text(errorWrapper.guidance)
+				}
+			*/
+		}
+	}
+
+	private func showError(error: Error, guidance: String) {
+		errorWrapper = LoginScreenFourErrorWrapper(error: error, guidance: guidance)
+	}
 }

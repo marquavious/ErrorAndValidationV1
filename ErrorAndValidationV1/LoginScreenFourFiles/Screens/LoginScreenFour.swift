@@ -13,16 +13,19 @@ struct LoginScreenFour: View {
 
 	var body: some View {
 		VStack(spacing: 18) {
-				Button("Throw error") {
-					showError(LISFSampleError.operationFailed, "Operation Failed please try again later.")
-				}
-
-				NavigationLink("Show another screen to display global error") {
-					LISFSampleScreen()
-						.withErrorView()
-				}
+			Button("Throw sample error") {
+				showError(LISFSampleError.operationFailed, "Operation Failed please try again later.")
 			}
-			.padding()
+			.buttonStyle(.borderedProminent)
+
+			NavigationLink("Show another screen to display global error") {
+				LISFSampleScreen()
+					.withErrorView()
+			}
+			.buttonStyle(.bordered)
+		}
+		.padding()
+		.navigationTitle("Screen One")
 	}
 }
 

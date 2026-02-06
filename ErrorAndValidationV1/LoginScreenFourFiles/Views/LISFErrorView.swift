@@ -15,8 +15,13 @@ struct LISFErrorView: View {
 		VStack {
 			if let errorWrapper {
 				Text(errorWrapper.guidance)
+					.foregroundStyle(.white)
+					.padding(10)
+					.background(.red)
+					.cornerRadius(10)
 			}
 		}
+		// Show errors on timer and manage showing multiple calls
 		.task(id: errorWrapper?.id) {
 			try? await Task.sleep(for: .seconds(2))
 			guard !Task.isCancelled else {
@@ -26,4 +31,19 @@ struct LISFErrorView: View {
 			errorWrapper = nil
 		}
 	}
+}
+
+#Preview("With Error") {
+	@Previewable @State var errorWrapper: LISFErrorWrapper? = LISFErrorWrapper(
+		error: NSError(domain: "com.example.error", code: 401, userInfo: [NSLocalizedDescriptionKey: "Authentication failed"]),
+		guidance: "Invalid username or password. Please try again."
+	)
+	
+	LISFErrorView(errorWrapper: $errorWrapper)
+}
+
+#Preview("No Error") {
+	@Previewable @State var errorWrapper: LISFErrorWrapper? = nil
+	
+	LISFErrorView(errorWrapper: $errorWrapper)
 }

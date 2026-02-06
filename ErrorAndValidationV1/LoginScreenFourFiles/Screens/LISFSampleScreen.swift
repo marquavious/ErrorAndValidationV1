@@ -12,9 +12,11 @@ struct LISFSampleScreen: View {
 	@Environment(\.showError) private var showError
 
 	var body: some View {
-		Button("Show Error") {
+		Button("Show Error using screen modifier") {
 			showError(LISFSampleError.operationFailed, "Operation Failed")
 		}
+		.buttonStyle(.borderedProminent)
+		.navigationBarTitle("Screen Two")
 	}
 }
 

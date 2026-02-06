@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct LoginScreenFourErrorWrapper: Identifiable {
+struct LISFErrorWrapper: Identifiable {
 	let id = UUID()
 	let error: Error
 	let guidance: String

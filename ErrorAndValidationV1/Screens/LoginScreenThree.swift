@@ -7,17 +7,6 @@
 
 import SwiftUI
 
-enum LoginScreenThreeError: Error, LocalizedError {
-	case invalidCredentials
-
-	var errorDescription: String? {
-		switch self {
-		case .invalidCredentials:
-			NSLocalizedString("Invalid Credentials", comment: "Invalid Credentials Login Screen error")
-		}
-	}
-}
-
 struct LoginScreenThreeConfig {
 
 	var username: String = ""
@@ -57,7 +46,7 @@ struct LoginScreenThree: View {
 				 If this view gets created again, the call will never complete.
 				 This is why we are not placing the code here
 				 Task {
-				 httpClient.login(username: loginScreenOneConfig.username, password: loginScreenOneConfig.password)
+						httpClient.login(username: loginScreenOneConfig.username, password: loginScreenOneConfig.password)
 				 }
 				 */
 

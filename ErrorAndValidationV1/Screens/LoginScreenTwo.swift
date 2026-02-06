@@ -121,6 +121,7 @@ struct InputForm: View {
 	LoginScreenTwo()
 }
 
+// Spanish support
 #Preview("Spanish") {
 	LoginScreenTwo()
 		.environment(\.locale, Locale(identifier: "es"))

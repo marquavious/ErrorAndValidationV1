@@ -7,6 +7,7 @@
 
 import Foundation
 
+// Fake HTTPClient to simulate error throwing
 struct HTTPClient {
 	func login(username: String, password: String) async throws {
 		throw LoginScreenThreeError.invalidCredentials

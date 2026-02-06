@@ -10,28 +10,22 @@ import SwiftUI
 @main
 struct ErrorAndValidationV1App: App {
 
-	@State private var errorWrapper: LoginScreenFourErrorWrapper?
+	@State private var errorWrapper: LISFErrorWrapper?
 
 	var body: some Scene {
 		WindowGroup {
-			
-			// Enter Log in Screen you would like to test here
-			// LoginScreenOne()
-
 			NavigationStack {
+
+				/* Uncomment the Log in Screen you would like to test here
+				 LoginScreenOne()
+				 LoginScreenTwo()
+				 LoginScreenThree()
+				 */
+
+				// This Screen shoes the power of global error handling
 				LoginScreenFour()
 					.withErrorView()
 			}
-			/*
-				.environment(\.showError, ShowErrorAction(action: showError))
-				.sheet(item: $errorWrapper) { errorWrapper in
-					Text(errorWrapper.guidance)
-				}
-			*/
 		}
-	}
-
-	private func showError(error: Error, guidance: String) {
-		errorWrapper = LoginScreenFourErrorWrapper(error: error, guidance: guidance)
 	}
 }

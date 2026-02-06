@@ -9,7 +9,6 @@ import SwiftUI
 
 struct LISFSampleScreen: View {
 
-
 	@Environment(\.showError) private var showError
 
 	var body: some View {

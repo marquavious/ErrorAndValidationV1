@@ -15,7 +15,7 @@ struct ShowErrorAction {
 	typealias Action = (Error, String) -> ()
 	let action: Action
 
-	// We do this becuase we want to use the ENV in clousres
+	// We do this becuase we want to use ENV in clousres
 	// without memeory issues
 	func callAsFunction(_ error: Error, _ guidance: String) {
 		action(error, guidance)
